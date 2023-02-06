@@ -10,6 +10,11 @@ routes.use(bodyParser.json());
 routes.use(express.static('public'));
 const urlencode = bodyParser.urlencoded({ extended: true });
 
+// // login endpoint
+// routes.get('/login/:uid', (req, res) => {
+//     return LoginEndpoint.evaluate(req, res);
+// });
+
 // The (so far) single route to the game...
 routes.get('/play/:uid',  (req,res) => {
     return GameEndpoint.play(req,res);

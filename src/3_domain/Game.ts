@@ -91,30 +91,32 @@ class Game{
    }
 
    public displayResultInHTML(value: Result): string {
-      let line: string = "<html><body><h1>You choose ";
+      let line: string = "<html><body><h1>Client: ";
       if (this.clientHand === Hand.Paper) {
-         line += "paper, ";
+         line += "Paper";
       } else if (this.clientHand === Hand.Rock) {
-         line += "rock, ";
+         line += "Rock";
       } else {
-         line += "scissors, ";
+         line += "Scissors";
       }
+      line += "<br/>";
 
-      line += "the computer choose ";
+      line += "Computer: ";
       if (this.computerHand === Hand.Paper) {
-         line += "paper. ";
+         line += "Paper";
       } else if (this.computerHand === Hand.Rock) {
-         line += "rock. ";
+         line += "Rock";
       } else {
-         line += "scissors. ";
+         line += "Scissors";
       }
+      line += "<br/>";
 
       if (value === Result.Draw) {
          line += "It's a draw, play again!";
       } else if (value === Result.Won) {
-         line += "You won!";
+         line += "Client won!";
       } else {
-         line += "You lost!";
+         line += "Client lost!";
       }
 
       line += "</h1></body></html>";
