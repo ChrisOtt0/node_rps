@@ -23,7 +23,7 @@ class GameEndpoint{
         const setGameResult:SetGameResult = new SetGameResult();
 
         // Defining the chain of actions:
-        //handler #0 -> #2
+        // handler #0 -> #2
         checkAuth.setNext(getClientNumber);
         // handler #1 -> #2
         getClientNumber.setNext(pickRandomHand);
