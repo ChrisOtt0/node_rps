@@ -6,7 +6,6 @@ class Guard {
     public static hasSession(request: any): boolean {
         const token: string = request.cookies.tokenKey;
         if (token) {
-            console.debug("The user: " + Session.getUserName(token) + "")
             return true;
         }
         return false;
