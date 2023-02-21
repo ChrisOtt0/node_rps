@@ -55,6 +55,7 @@ class RegisterEndpoint {
         const redisClient = createClient();
         await redisClient.connect();
         const value = await redisClient.get(playerID);
+        await redisClient.disconnect();
 
         if (value === null) {
             return response.status(200).json("PlayerID is available.");

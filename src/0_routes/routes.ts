@@ -2,8 +2,7 @@ import express from 'express';
 import * as bodyParser from 'body-parser';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
-import bcrypt from 'bcrypt';
-import {createClient} from 'redis';
+import * as fs from 'fs';
 import { GameEndpoint } from '../1_endpoints/GameEndpoint';
 import { LoginEndpoint } from '../1_endpoints/LoginEndpoint';
 import { RegisterEndpoint } from '../1_endpoints/RegisterEndpoint';
@@ -39,6 +38,22 @@ routes.get('/play/:uid',  (req,res) => {
     return GameEndpoint.play(req,res);
 });
 
+// fs endpoint test -- dump data when api works
+routes.get('/file', (req, res) => {
+    try {
+        fs.writeFileSync('friends.txt', 'Bob\n');
+        fs.appendFileSync('friends.txt', 'Alice\n');
+    
+        const lines = fs.readFileSync('friends.txt', 'utf-8');
+        console.debug(lines);
+        return res.status(200).json(lines);
+    }
+    catch (e) {
+        console.error(e);
+        return res.status(500).json(e);
+    }
+});
+
 // // demo of using redis database
 // routes.get('/test', async (req, res) => {
 //     const client = createClient();
@@ -55,4 +70,3 @@ routes.get('*', (req,res) =>{
 });
 
 export {routes}
-
