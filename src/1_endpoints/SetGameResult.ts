@@ -4,6 +4,7 @@ import { DisplayStrategy } from "../2_domain_services/DisplayStrategy";
 import { Hand } from "../3_domain/Hand";
 import { Result } from "../3_domain/Result";
 import { BaseHandler } from "./BaseHandler";
+import { Session } from "./Session";
 
 // Returns the result of the game
 class SetGameResult extends BaseHandler{
@@ -19,7 +20,7 @@ class SetGameResult extends BaseHandler{
            ds = new HtmlStrategy();
         }
 
-        response.status(200).send(ds.display(clientHand, computerHand, gameResult));
+        response.status(200).send(ds.display(clientHand, computerHand, gameResult, Session.getUserName(request.cookies.tokenKey)));
     }
 
 }export {SetGameResult}

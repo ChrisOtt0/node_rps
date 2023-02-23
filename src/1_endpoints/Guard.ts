@@ -4,8 +4,7 @@ const MAXNUMBEROFPLAYS: number = 5;
 
 class Guard {
     public static hasSession(request: any): boolean {
-        const token: string = request.cookies.tokenKey;
-        if (token) {
+        if (request.cookies) {
             return true;
         }
         return false;

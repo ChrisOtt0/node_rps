@@ -2,8 +2,11 @@ import { Player } from "../3_domain/Player";
 import { Session } from "./Session";
 import bcrypt from 'bcrypt';
 import {createClient} from 'redis';
+import { ErrorLogger } from "../2_domain_services/ErrorLogger";
 
 class RegisterEndpoint {
+    static logger: ErrorLogger = new ErrorLogger();
+
     public static async registerAsync(request: any, response: any) {
         try {
             // clear cookies

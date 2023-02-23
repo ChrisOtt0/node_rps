@@ -38,21 +38,21 @@ routes.get('/play/:uid',  (req,res) => {
     return GameEndpoint.play(req,res);
 });
 
-// fs endpoint test -- dump data when api works
-routes.get('/file', (req, res) => {
-    try {
-        fs.writeFileSync('friends.txt', 'Bob\n');
-        fs.appendFileSync('friends.txt', 'Alice\n');
-    
-        const lines = fs.readFileSync('friends.txt', 'utf-8');
-        console.debug(lines);
-        return res.status(200).json(lines);
-    }
-    catch (e) {
-        console.error(e);
-        return res.status(500).json(e);
-    }
-});
+// // fs endpoint test -- dump data when api works
+// routes.get('/file', (req, res) => {
+//     try {
+//         fs.writeFileSync('friends.txt', 'Bob\n');
+//         fs.appendFileSync('friends.txt', 'Alice\n');
+
+//         const lines = fs.readFileSync('friends.txt', 'utf-8');
+//         console.debug(lines);
+//         return res.status(200).json(lines);
+//     }
+//     catch (e) {
+//         console.error(e);
+//         return res.status(500).json(e);
+//     }
+// });
 
 // // demo of using redis database
 // routes.get('/test', async (req, res) => {

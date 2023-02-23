@@ -5,7 +5,6 @@ import { BaseHandler } from "./BaseHandler";
 class FindWinner extends BaseHandler{
 
      public handle(request:any,response:any):any{
-         console.debug("FindWinner handler...");
          const result:Result = super.getGame().evaluate();
          super.getGame().setGameResult(result);
          super.getNext().handle(request, response);
